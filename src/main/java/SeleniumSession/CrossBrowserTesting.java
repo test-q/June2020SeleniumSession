@@ -10,12 +10,10 @@ import io.github.bonigarcia.wdm.WebDriverManager;
 public class CrossBrowserTesting {
 
 	static WebDriver driver;
-	
-	//WebDriver Manager is separate maven dependency ->https://github.com/bonigarcia/webdrivermanager
 
 	public static void main(String[] args) {
 
-		String browser = "firefox";
+		String browser = "chrome";
 		
 //		
 //		if (browser.equalsIgnoreCase("chrome")) {
@@ -39,6 +37,10 @@ public class CrossBrowserTesting {
 		case "firefox":
 			System.setProperty("webdriver.gecko.driver", "D:\\Rupali\\Driver\\geckodriver.exe");
      		driver = new FirefoxDriver();
+     		break;
+		case "ie":
+			WebDriverManager.iedriver().setup();
+     		driver = new InternetExplorerDriver();
      		break;
      	default:
      		System.out.println("Please pass the correct Browser name...");

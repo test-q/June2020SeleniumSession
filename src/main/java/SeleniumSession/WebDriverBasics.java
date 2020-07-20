@@ -28,7 +28,7 @@ public class WebDriverBasics {
 												// If you not written System.setProperty line than it will throw the
 												// "ExecutionException" error
 
-		driver.get("http://google.com"); // Enter URL - If u r written this way "www.google.com" than it is not working ->Without http it wont work
+		driver.get("http://google.com"); // If u r written this way "www.google.com" than it is not working ->Without http it wont work shows "invalid argument"
 
 		String title1 = driver.getTitle(); // Getting title
 		System.out.println(title1);
