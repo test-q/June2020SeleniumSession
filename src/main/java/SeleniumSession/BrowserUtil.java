@@ -13,7 +13,7 @@ public class BrowserUtil {
 	
 
 	/**
-	 * this is browser util, having different browser related generic functions
+	 * this is browser util, having different browser related generic functions Please reuse it.
 	 * @author rupal
 	 */
 	
