@@ -20,7 +20,8 @@ public class HeadlessBrowserConcept {
 		
 		
 		ChromeOptions co = new ChromeOptions();
-		co.addArguments("--headless");
+		//co.addArguments("--headless");
+		co.addArguments("--incognito"); // if you want to run the test in incognito mode
 		WebDriverManager.chromedriver().setup();
 		WebDriver driver = new ChromeDriver(co);
 		
