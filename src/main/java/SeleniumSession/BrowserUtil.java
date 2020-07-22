@@ -113,5 +113,9 @@ public class BrowserUtil {
 	public void quitBrowser() {
 		driver.quit();
 	}
+	
+	public void getMaximize() {
+		driver.manage().window().maximize();
+	}
 
 }

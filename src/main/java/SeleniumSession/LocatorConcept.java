@@ -13,6 +13,7 @@ public class LocatorConcept {
 	
 	public static void main(String[] args) throws InterruptedException {
 		
+		
 		WebDriverManager.chromedriver().setup();
 		driver = new ChromeDriver();
 		
@@ -54,7 +55,35 @@ public class LocatorConcept {
 		doSendKeys(password1, "rup123");
 		doClick(loginButton1);
 		
+		//2. name:
+		//driver.findElement(By.name("username")).sendKeys("test@gmail.com");
 		
+		//3. className:
+		//form-control private-form__control login-email
+		//form-control private-form__control login-password m-bottom-3
+//		driver.findElement(By.className("login-email")).sendKeys("test@gmail.com");
+//		driver.findElement(By.className("login-password")).sendKeys("test@gmail.com");
+		
+		//4. xpath: address of element in HTML DOM - is a locator but not an attribute
+//		driver.findElement(By.xpath("//*[@id='username']")).sendKeys("test@gmail.com");
+//		driver.findElement(By.xpath("//*[@id='password']")).sendKeys("test@123");
+		
+		//5. cssSelector: address of element in HTML DOM - is a locator but not an attribute
+//		driver.findElement(By.cssSelector("#username")).sendKeys("test@gmail.com");
+//		driver.findElement(By.cssSelector("#password")).sendKeys("test123");
+		
+		
+		//6. link text: only for links: with <a> htmltag
+		//driver.findElement(By.linkText("Sign up")).click();
+		
+		//7. partialLinkText: only for links but not recommended
+		//sign up
+		//sign in
+		//driver.findElement(By.partialLinkText("Sign")).click();
+		
+		//8. tagName: html tag
+//		String header = driver.findElement(By.tagName("h1")).getText();
+//		System.out.println(header);
 	}
 	
 	public static WebElement getElement(By locator) {
