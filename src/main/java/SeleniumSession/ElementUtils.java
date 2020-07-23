@@ -72,6 +72,15 @@ public class ElementUtils {
 		
 	}
 	
+	public void getAllImages(By locator) {
+		int length = getElementList(locator).size();
+		System.out.println("No. of Images available: " + length);
+		
+		for(WebElement img : getElementList(locator)) {
+			System.out.println(img.getAttribute("alt"));
+		}
+	}
+	
 	
 	
 	
