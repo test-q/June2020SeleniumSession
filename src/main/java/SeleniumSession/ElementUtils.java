@@ -5,6 +5,7 @@ import java.util.List;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.Select;
 
 public class ElementUtils {
 	
@@ -62,7 +63,7 @@ public class ElementUtils {
 		
 		for(WebElement ele : getElementList(locator)) {
 			String linkName = ele.getText();
-			System.out.println(ele.getText());
+			System.out.println(linkName);
 			
 			if(linkName.equals(value)) {
 				ele.click();
@@ -72,6 +73,10 @@ public class ElementUtils {
 		
 	}
 	
+	/**
+	 * this method is used to find all image on Web page and click given image
+	 * @param locator
+	 */
 	public void getAllImages(By locator) {
 		int length = getElementList(locator).size();
 		System.out.println("No. of Images available: " + length);
@@ -81,7 +86,108 @@ public class ElementUtils {
 		}
 	}
 	
+	//***************************** DROP DOWN UTILITY ******************************
+	/**
+	 * this method is used to select drop down box value by visible text
+	 * @param locator
+	 * @param value
+	 */
+	public void getDropDownByVisibleText(By locator, String value) {
+		WebElement ele = driver.findElement(locator);
+		Select s = new Select(ele);
+		s.selectByVisibleText(value);
+		
+	}
 	
+	/**
+	 * this method is used to select drop down box value by index based
+	 * @param locator
+	 * @param index
+	 */
+	public void getDropDownByIndex(By locator, int index) {
+//		WebElement ele = driver.findElement(locator);
+//		Select s = new Select(ele);
+//		s.selectByIndex(index);
+		
+		WebElement ele1 = getElement(locator);  // using getElement()
+		Select s = new Select(ele1);
+		s.selectByIndex(index);	
+	}
+	
+	/**
+	 * this method is used to select drop down box value by value text
+	 * @param locator
+	 * @param value
+	 */
+	public void getDropDownByValue(By locator, String value) {
+		WebElement ele = driver.findElement(locator);
+		Select s = new Select(ele);
+		s.selectByValue(value);
+	}
+	
+	
+	/**
+	 * this method is used to find out size of drop down box.
+	 * @param locator
+	 * @return int
+	 */
+	public int getDropdownOptionsCount(By locator) {
+		WebElement dropdownBox = driver.findElement(locator);
+		
+		Select s = new Select(dropdownBox);
+		List<WebElement> optionList = s.getOptions();
+		return optionList.size();
+		
+	}
+	
+	/**
+	 * this method is used to display all options in drop down box
+	 * @param locator
+	 */
+	public void getDropdownOptionsValue(By locator) {
+		WebElement dropdownBox = driver.findElement(locator);
+		Select s = new Select(dropdownBox);
+		List<WebElement> optionList = s.getOptions();
+		
+		optionList.stream().forEach(ele -> System.out.println(ele.getText()));
+	}
+	 
+	/**
+	 * this method is used to click on particular option in drop down box.
+	 * @param locator
+	 * @param value
+	 */
+	public void getDropdownOptionsClick(By locator, String value) {
+		WebElement dropdownBox = driver.findElement(locator);
+		Select s = new Select(dropdownBox);
+		List<WebElement> optionList = s.getOptions();
+		
+		for(WebElement ele : optionList) {
+			String text = ele.getText();
+			if(text.equals(value)) {
+				ele.click();
+				System.out.println("Text click Successfully : " + text);
+			}
+		}
+	}
+	
+	public void getValueFromDropDownWithoutSelectClass(By locator, String value) {
+		
+		List<WebElement> optionList = driver.findElements(locator);
+		
+		System.out.println("Size Of Dropdown Box: " + optionList.size());
+		
+		for(WebElement ele : optionList) {
+			String text = ele.getText();
+			System.out.println(text);
+			if(text.equals(value)) {
+				ele.click();
+				System.out.println(text + " : Click Successfully");
+				break;
+			}
+		}
+		
+	}
 	
 	
 	
