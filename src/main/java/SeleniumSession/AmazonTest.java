@@ -9,6 +9,7 @@ public class AmazonTest {
 	
 		String browserName = "chrome";
 		By images = By.tagName("img");
+		By searchDropBox = By.xpath("//select[@id='searchDropdownBox']/option");
 		
 		BrowserUtil br = new BrowserUtil();
 		WebDriver driver = br.launchBrowser(browserName);
@@ -16,6 +17,8 @@ public class AmazonTest {
 		
 		ElementUtils eleUtil = new ElementUtils(driver);
 		eleUtil.getAllImages(images);
+		
+		eleUtil.getValueFromDropDownWithoutSelectClass(searchDropBox, "Baby");
 		
 		br.closeBrowser();
 

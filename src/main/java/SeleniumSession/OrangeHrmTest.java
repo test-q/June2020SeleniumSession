@@ -17,6 +17,10 @@ public class OrangeHrmTest {
 		By comName 	 = By.name("CompanyName");
 		By phone 	 = By.name("Contact");
 		By text 	 = By.linkText("Privacy Policy");
+		//Drop down box
+		By employees = By.id("Form_submitForm_NoOfEmployees");
+		By industry = By.id("Form_submitForm_Industry");
+		By country  = By.id("Form_submitForm_Country");
 		
 		BrowserUtil br = new BrowserUtil();
 		WebDriver driver = br.launchBrowser(browserName);
@@ -40,8 +44,15 @@ public class OrangeHrmTest {
 		eu.doSendKeys(lastName, "Gurav");
 		eu.doSendKeys(email, "rupali@gmail.com");
 		eu.doSendKeys(jobTitle, "Sr. Test Eng");
+		eu.getDropDownByIndex(employees, 5);
 		eu.doSendKeys(comName, "UBS");
+		eu.getDropDownByValue(industry, "Government-Local");
 		eu.doSendKeys(phone, "02225426008");
+		eu.getDropDownByVisibleText(country, "India");
+		
+		System.out.println(eu.getDropdownOptionsCount(country));
+		eu.getDropdownOptionsValue(country);
+		eu.getDropdownOptionsClick(country, "Brazil");
 		
 		String pageText = eu.doGetText(text);
 		System.out.println("Text is : " + pageText);
@@ -51,6 +62,8 @@ public class OrangeHrmTest {
 		else {
 			System.out.println("Text is not visible.");
 		}
+		
+		
 		
 		driver.close();
 		
