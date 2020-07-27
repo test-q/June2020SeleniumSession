@@ -52,7 +52,7 @@ public class OrangeHrmTest {
 		
 		System.out.println(eu.getDropdownOptionsCount(country));
 		eu.getDropdownOptionsValue(country);
-		eu.getDropdownOptionsClick(country, "Brazil");
+		eu.getDropdownOptionsText(country);
 		
 		String pageText = eu.doGetText(text);
 		System.out.println("Text is : " + pageText);

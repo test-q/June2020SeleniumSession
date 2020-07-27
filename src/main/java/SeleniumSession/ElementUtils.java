@@ -1,5 +1,6 @@
 package SeleniumSession;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.openqa.selenium.By;
@@ -152,23 +153,25 @@ public class ElementUtils {
 		optionList.stream().forEach(ele -> System.out.println(ele.getText()));
 	}
 	 
-	/**
-	 * this method is used to click on particular option in drop down box.
-	 * @param locator
-	 * @param value
-	 */
-	public void getDropdownOptionsClick(By locator, String value) {
+/**
+ * this method is used to return drop down options text.
+ * @param locator
+ * @param value
+ * @return Drop down values List of text
+ */
+	public List<String> getDropdownOptionsText(By locator) {
+		List<String> textList = new ArrayList<String>();
+		
 		WebElement dropdownBox = driver.findElement(locator);
 		Select s = new Select(dropdownBox);
-		List<WebElement> optionList = s.getOptions();
+		List<WebElement> optionList = s.getOptions(); 
 		
-		for(WebElement ele : optionList) {
+		for(WebElement ele: optionList) {
 			String text = ele.getText();
-			if(text.equals(value)) {
-				ele.click();
-				System.out.println("Text click Successfully : " + text);
-			}
+			System.out.println(text);
+			textList.add(text);	
 		}
+		return 	textList;
 	}
 	
 	public void getValueFromDropDownWithoutSelectClass(By locator, String value) {
@@ -189,7 +192,35 @@ public class ElementUtils {
 		
 	}
 	
-	
+	/**
+	 * this method is used to click value from suggestion list open and return suggestion list
+	 * @param locator
+	 * @param text
+	 * @return 
+	 */
+	public ArrayList<String> doSuggestionListClick(By locator, String text) {
+		boolean flag = true;
+		ArrayList<String> suggestionText = new ArrayList<String>();
+		List<WebElement> suggestionEleList = driver.findElements(locator); 
+		System.out.println(suggestionEleList.size());
+		
+		for(WebElement ele : suggestionEleList) {
+			String value = ele.getText();
+			System.out.println(value);
+			suggestionText.add(value);
+			
+			if(value.equals(text)) {
+				ele.click();
+				System.out.println(text+" : Is Found In Suggestion List.");
+				flag = false;
+				break;
+			}
+		}
+		if(flag == true) {
+			System.out.println(text + " : Is not found in suggestion list.");
+		}
+		return suggestionText;
+	}
 	
 	
 	

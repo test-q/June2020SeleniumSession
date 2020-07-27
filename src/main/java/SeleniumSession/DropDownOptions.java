@@ -1,5 +1,6 @@
 package SeleniumSession;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.openqa.selenium.By;
@@ -27,8 +28,9 @@ public class DropDownOptions {
 		System.out.println(getDropdownOptionsCount(searchDropBox));
 		
 		//getDropdownOptionsValue(searchDropBox);
-		getDropdownOptionsClick(searchDropBox, "Luggage & Bags");
+		System.out.println(getDropdownOptionsValue(searchDropBox, "Luggage & Bags"));
 		
+		//select[@id='searchDropdownBox']/option
 		
 //		WebElement searchDropdown = driver.findElement(By.id("searchDropdownBox"));
 //		Select s = new Select(searchDropdown);
@@ -41,7 +43,7 @@ public class DropDownOptions {
 		
 //		dropdownOptions.stream().forEach(ele -> System.out.println(ele.getText()));
 		
-	
+		
 	}
 	
 	public static int getDropdownOptionsCount(By locator) {
@@ -61,18 +63,18 @@ public class DropDownOptions {
 		optionList.stream().forEach(ele -> System.out.println(ele.getText()));
 	}
 	
-	public static void getDropdownOptionsClick(By locator, String value) {
+	public static List<String> getDropdownOptionsValue(By locator, String value) {
+		List<String> textList = new ArrayList<String>();
 		WebElement dropdownBox = driver.findElement(locator);
 		Select s = new Select(dropdownBox);
 		List<WebElement> optionList = s.getOptions(); 
 		
-		for(WebElement ele : optionList) {
+		for(WebElement ele: optionList) {
 			String text = ele.getText();
-			if(text.equals(value)) {
-				ele.click();
-				System.out.println("Text click Successfully : " + text);
-			}
+			System.out.println(text);
+			textList.add(text);	
 		}
+		return 	textList;
 	}
 
 }

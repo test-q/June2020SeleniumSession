@@ -17,7 +17,7 @@ public class WebDriverBasics {
 		 */
 		System.setProperty("webdriver.chrome.driver", "D:\\Rupali\\Driver\\chromedriver.exe");
 
-//		WebDriver driver = new WebDriver(); //WebDriver is interface and we can not create object of WebDriver
+//		WebDriver driver = new WebDriver(); //WebDriver is interface and we can not create object of Interface.
 //		Hence we are doing Top casting -> Create object of child class can be referred by Interface reference variable
 		WebDriver driver = new ChromeDriver();// ChromeDriver is class which is extending RemoteWebDriver and
 												// RemoteWebDriver is implementing WebDriver interface
