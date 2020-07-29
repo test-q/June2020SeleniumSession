@@ -223,6 +223,46 @@ public class ElementUtils {
 	}
 	
 	
+	/**
+	 * this method is used to click on "single choice/Multiple choice/ all choice" in choice drop down/jquery drop down box.
+	 * @param locator
+	 * @param value
+	 */ 	
+	public void selectChoiceValue(By locator, String... value) {
+		List<WebElement> choiceList = driver.findElements(locator);
+		
+		try {
+			if(value[0].equalsIgnoreCase("all")) {
+				for(int all=0; all<choiceList.size(); all++) {
+					String text = choiceList.get(all).getText();
+					choiceList.get(all).click();
+					System.out.println(text + " : is Clicked");
+				}
+			}
+			
+			else {
+				for(int i=0;  i<choiceList.size();  i++) {
+					
+					String text = choiceList.get(i).getText();
+					System.out.println(text);
+					
+					for(int j=0; j<value.length; j++) {		
+						if(text.equals(value[j])) {
+							choiceList.get(i).click();
+							System.out.println(text + " : is Clicked");
+							break;
+						}
+					}		
+				}	
+			}
+			
+		}catch(Exception e) {	
+			
+			
+	    }
+   }
+	
+	
 	
 	
 	
