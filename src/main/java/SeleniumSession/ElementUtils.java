@@ -6,6 +6,7 @@ import java.util.List;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.Select;
 
 public class ElementUtils {
@@ -262,8 +263,45 @@ public class ElementUtils {
 	    }
    }
 	
+	/**
+	 * to drag the source element and drop it at target element.
+	 * @param source
+	 * @param target
+	 */
+	public void doDragAndDrop(WebElement source, WebElement target) {
+		Actions act = new Actions(driver);
+		act.dragAndDrop(source, target).perform();
+		
+	}
 	
+	/**
+	 * to move the mouse to the middle of element.
+	 * @param ele
+	 */
+	public void doMovetoElement(WebElement ele) {
+		Actions act = new Actions(driver);
+		act.moveToElement(ele).perform();
+		
+	}
 	
+	/**
+	 * to send the keys at selected targeted location
+	 * @param locator
+	 * @param value
+	 */
+	public void doActionsSendKeys(By locator, String value){
+		Actions act = new Actions(driver);
+		act.sendKeys(getElement(locator), value).perform();
+	}
+	
+	/**
+	 * to click on targeted location
+	 * @param locator
+	 */
+	public void doActionsClick(By locator){
+		Actions act = new Actions(driver);
+		act.click(getElement(locator)).perform();
+	}
 	
 	
 
