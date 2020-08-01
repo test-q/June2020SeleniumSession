@@ -12,9 +12,11 @@ import org.openqa.selenium.support.ui.Select;
 public class ElementUtils {
 	
 	WebDriver driver;
+	JavaScriptUtil jsUtil;
 	
 	public ElementUtils(WebDriver driver) {
 		this.driver = driver;
+		jsUtil = new JavaScriptUtil(driver);
 	}
 	
 	/**
