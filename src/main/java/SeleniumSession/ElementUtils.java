@@ -2,8 +2,10 @@ package SeleniumSession;
 
 import java.time.Duration;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 import java.util.NoSuchElementException;
+import java.util.Set;
 
 import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
@@ -384,6 +386,38 @@ public class ElementUtils {
 									.ignoring(NoSuchElementException.class);
 		return wait.until(ExpectedConditions.presenceOfElementLocated(locator));
 	}
+	
+	// ***************************** WINDOW HANDLE UTILITY ******************************
+	
+	public void getBrowserWindowHandle(Set<String> windowSet, String parentWindowId) {
+		int count = windowSet.size();
+		System.out.println("No. Of Windows Opened: " + count);
+		Iterator<String> it = windowSet.iterator();
+		while(it.hasNext()) {
+			String curChildWindowId = it.next();
+			if(! parentWindowId.equals(curChildWindowId)) {
+				driver.switchTo().window(curChildWindowId);
+				System.out.println("Title Of child Window: " + driver.getTitle());
+				driver.close();
+			}			
+		}		
+	}
+	
+	public void getBrowserWindowHandleWithList(Set<String> windowSet, String parentWindowId) {
+		List<String> windowList= new ArrayList<String>(windowSet);
+		int count = windowList.size();
+		System.out.println("No of Windows Opened: " + count);
+		
+		for(int i=0; i<count; i++) {
+			String curChildWindowId = windowList.get(i);
+			if(! parentWindowId.equals(curChildWindowId)) {
+				driver.switchTo().window(curChildWindowId);
+				System.out.println("Title Of Child Window " + i + " : " + driver.getTitle());
+				driver.close();
+			}
+		}
+	}
+
 
 }
 	
