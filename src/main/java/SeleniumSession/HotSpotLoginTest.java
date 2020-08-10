@@ -11,7 +11,8 @@ public class HotSpotLoginTest {
 		By userName = By.id("username");
 		By password = By.id("password");
 		By loginButton  = By.id("loginBtn");
-		
+		By un = By.className("login-email");
+		By un1 = By.cssSelector(".form-control.private-form__control.login-email");
 		
 		BrowserUtil br = new BrowserUtil();
 		WebDriver driver = br.launchBrowser(browserName);
@@ -23,7 +24,7 @@ public class HotSpotLoginTest {
 		System.out.println("Title of Page is: " +title);
 		
 		ElementUtils element = new ElementUtils(driver);
-		element.doSendKeys(userName, "rupali@gmail.com");
+		element.doSendKeys(un1, "rupali@gmail.com");
 		element.doSendKeys(password, "rup123");
 		element.doClick(loginButton);
 		br.closeBrowser();	
