@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+
+<suite name="My Social Media Test Suite" thread-count="3" parallel="tests" verbose="2">
+
+	<test name="Google Test - Chrome">
+		<parameter name="browser" value="chrome" />
+		<parameter name="url" value="https://www.google.com/" />
+		<classes>
+			<class name="app.tests.GoogleTest" />
+		</classes>
+	</test>
+
+	<test name="FreshWorks Test - Chrome">
+		<parameter name="browser" value="chrome" />
+		<parameter name="url" value="https://www.freshworks.com/" />
+		<classes>
+			<class name="app.tests.FreshWorksTest" />
+		</classes>
+	</test>
+
+	<test name="RediffMailTest Test - Chrome">
+		<parameter name="browser" value="chrome" />
+		<parameter name="url" value="https://www.rediff.com/" />
+		<classes>
+			<class name="app.tests.RediffMailTest" />
+		</classes>
+	</test>
+
+</suite>
+
