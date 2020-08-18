@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+
+<suite name="My Social Media Test Suite" thread-count="3" parallel="classes" verbose="1">
+
+	<test name="My Social Media Test - Chrome">
+		<parameter name="browser" value="chrome" />
+		
+		<classes>
+			<class name="app.tests.GoogleTest" />
+			<class name="app.tests.FreshWorksTest" />
+			<class name="app.tests.RediffMailTest" />			
+		</classes>
+		
+	</test>
+</suite>
+
