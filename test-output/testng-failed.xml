@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite thread-count="1" guice-stage="DEVELOPMENT" verbose="2" name="Failed suite [My Social Media Test Suite]" parallel="tests">
+  <test thread-count="1" verbose="2" name="RediffMailTest Test(failed)" parallel="tests">
+    <parameter name="browser" value="firefox"/>
+    <classes>
+      <class name="app.tests.RediffMailTest">
+        <methods>
+          <include name="rediffURLTest"/>
+          <include name="setup"/>
+          <include name="teardown"/>
+        </methods>
+      </class> <!-- app.tests.RediffMailTest -->
+    </classes>
+  </test> <!-- RediffMailTest Test(failed) -->
+</suite> <!-- Failed suite [My Social Media Test Suite] -->
