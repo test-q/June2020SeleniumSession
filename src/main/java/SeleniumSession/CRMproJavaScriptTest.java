@@ -50,7 +50,7 @@ public class CRMproJavaScriptTest {
 		Thread.sleep(4000);
 		jsUtil.scrollPageUp();
 		Thread.sleep(4000);
-		jsUtil.scrollIntoView(task);
+		//jsUtil.scrollIntoView(task);
 		Thread.sleep(4000);
 		
 //		jsUtil.checkPageIsReady();

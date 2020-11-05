@@ -4,12 +4,12 @@ import org.testng.annotations.Test;
 
 public class PriorityConcept {
 	
-	@Test(priority = 2)
+	@Test(priority = 1)
 	public void aTest() {
 		System.out.println("A .... Test");
 	}
 	
-	@Test
+	@Test(priority = 3)
 	public void bTest() {
 		System.out.println("B .... Test");
 	}
@@ -19,7 +19,7 @@ public class PriorityConcept {
 		System.out.println("C .... Test");
 	}
 	
-	@Test
+	@Test(priority = 2)
 	public void dTest() {
 		System.out.println("D .... Test");
 	}
